@@ -6,7 +6,7 @@
 
 **CSMAR**（China Stock Market & Accounting Research Database）是中国学术界最常用的金融数据库，由深圳国泰安教育技术股份有限公司开发。
 
-**官网**：https://www.gtarsc.com/
+**官网**：https://data.csmar.com/
 
 **优势**：
 - 数据质量高，经过严格校验
@@ -29,7 +29,7 @@
 
 ### 第一步：注册账号
 
-1. 访问 https://www.gtarsc.com/
+1. 访问 https://data.csmar.com/
 2. 点击"注册"
 3. 填写个人信息（建议使用学校邮箱）
 4. 完成邮箱验证
