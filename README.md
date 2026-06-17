@@ -200,7 +200,7 @@ python predict_2024.py
 
 如有问题，请通过以下方式联系：
 - 提交 [Issue](https://github.com/Deng-Yao/financial-crisis-prediction/issues)
-- 邮箱：your.email@example.com
+- 邮箱：dengyaocn@qq.com
 
 ## 🙏 致谢
 
