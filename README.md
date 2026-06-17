@@ -126,6 +126,26 @@ python predict_2024.py
 | AUC | ~0.90 |
 | 召回率 | ~75% |
 
+### 模型可视化
+
+#### ROC曲线与PR曲线
+
+![ROC和PR曲线](images/roc_pr_curves.png)
+
+*左图：ROC曲线比较，XGBoost AUC达到0.93；右图：PR曲线，适合不平衡数据分析*
+
+#### 过拟合分析
+
+![过拟合分析](images/overfitting_analysis.png)
+
+*时序CV AUC与测试集AUC对比，验证模型泛化能力*
+
+#### 特征重要性
+
+![特征重要性](images/feature_importance_xgboost.png)
+
+*XGBoost模型Top 20重要特征，ROA、ROE、资产负债率等为核心预测指标*
+
 ## 🔬 研究路线
 
 详见 [docs/research_roadmap.md](docs/research_roadmap.md)
