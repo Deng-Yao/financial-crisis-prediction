@@ -8,7 +8,7 @@
 
 ### 核心特点
 
-- 🎯 **高精度预测**：XGBoost模型AUC达到0.92+
+- 🎯 **高精度预测**：XGBoost模型AUC达到0.88+
 - ⏱️ **时序交叉验证**：防止数据泄露，确保模型可靠性
 - 🔍 **过拟合检测**：自动验证模型泛化能力
 - 💾 **模型持久化**：支持保存和加载训练好的模型
@@ -35,8 +35,7 @@ financial-crisis-prediction/
 │   ├── data_guide.md                  # 数据获取指南
 │   └── api_reference.md               # API参考
 └── examples/                           # 示例代码
-    ├── quick_start.py                 # 快速开始示例
-    └── custom_prediction.py           # 自定义预测示例
+    └── quick_start.py                 # 快速开始示例
 ```
 
 ## 🚀 快速开始
@@ -45,7 +44,7 @@ financial-crisis-prediction/
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/financial-crisis-prediction.git
+git clone https://github.com/Deng-Yao/financial-crisis-prediction.git
 cd financial-crisis-prediction
 
 # 安装依赖
@@ -114,17 +113,27 @@ python predict_2024.py
 
 | 模型 | AUC | Accuracy | Precision | Recall | F1 |
 |------|-----|----------|-----------|--------|-----|
-| **XGBoost** | **0.9276** | 0.8665 | 0.85 | 0.78 | 0.81 |
-| 随机森林 | 0.8388 | 0.8679 | 0.82 | 0.75 | 0.78 |
-| 逻辑回归 | 0.6347 | 0.6048 | 0.55 | 0.62 | 0.58 |
+| **XGBoost** | **0.8845** | 0.8114 | 0.1008 | 0.7978 | 0.1763 |
+| 随机森林 | 0.8159 | 0.8974 | 0.133 | 0.565 | 0.2129 |
+| 逻辑回归 | 0.6159 | 0.6211 | 0.037 | 0.5577 | 0.0689 |
+
+### 测试集结果（2023年数据）
+
+| 模型 | AUC | Accuracy | Precision | Recall | F1 |
+|------|-----|----------|-----------|--------|-----|
+| **XGBoost** | **0.8866** | 0.9684 | 0.2647 | 0.3434 | 0.2989 |
+| 随机森林 | 0.8314 | 0.9612 | 0.2219 | 0.3882 | 0.2824 |
+| 逻辑回归 | 0.6215 | 0.9782 | 0.0432 | 0.0051 | 0.0092 |
 
 ### 2024年样本外验证
 
 | 指标 | XGBoost |
 |------|---------|
-| 准确率 | ~85% |
-| AUC | ~0.90 |
-| 召回率 | ~75% |
+| 准确率 | 96.57% |
+| AUC | 0.842 |
+| 召回率 | 29.71% |
+| 精确率 | 20.94% |
+| F1分数 | 24.56% |
 
 ### 模型可视化
 
@@ -132,7 +141,7 @@ python predict_2024.py
 
 ![ROC和PR曲线](images/roc_pr_curves.png)
 
-*左图：ROC曲线比较，XGBoost AUC达到0.93；右图：PR曲线，适合不平衡数据分析*
+*左图：ROC曲线比较，XGBoost AUC达到0.89；右图：PR曲线，适合不平衡数据分析*
 
 #### 过拟合分析
 
