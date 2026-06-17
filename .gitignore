@@ -84,9 +84,13 @@ trained_models/*.joblib
 
 # Output files
 *.csv
-*.png
-*.jpg
 *.pdf
+
+# Images (keep for README)
+!images/
+images/*.png
+images/*.jpg
+images/*.svg
 
 # Jupyter Notebook
 .ipynb_checkpoints
