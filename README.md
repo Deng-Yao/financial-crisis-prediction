@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 ### 2. 准备数据
 
-从[CSMAR数据库](https://www.gtarsc.com/)下载以下数据表，放入 `data/` 目录：
+从[CSMAR数据库](https://data.csmar.com/)下载以下数据表，放入 `data/` 目录：
 
 | 文件名 | 说明 | 必需 |
 |--------|------|------|
@@ -199,12 +199,12 @@ python predict_2024.py
 ## 📧 联系方式
 
 如有问题，请通过以下方式联系：
-- 提交 [Issue](https://github.com/yourusername/financial-crisis-prediction/issues)
+- 提交 [Issue](https://github.com/Deng-Yao/financial-crisis-prediction/issues)
 - 邮箱：your.email@example.com
 
 ## 🙏 致谢
 
-- [CSMAR数据库](https://www.gtarsc.com/) 提供数据支持
+- [CSMAR数据库](https://data.csmar.com/) 提供数据支持
 - [XGBoost](https://xgboost.readthedocs.io/) 提供高效机器学习算法
 - [scikit-learn](https://scikit-learn.org/) 提供机器学习工具
 
