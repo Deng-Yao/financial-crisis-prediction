@@ -243,22 +243,31 @@ class CSMARDataProcessor:
         
         merge_keys = ['stock_code', 'report_date']
         
-        merged_df = pd.merge(balance_df, income_df, on=merge_keys, how='outer', suffixes=('_bs', '_is'))
+        merged_df = pd.merge(balance_df, income_df, on=merge_keys, how='inner', suffixes=('_bs', '_is'))
         print(f"  资产负债表与利润表合并完成")
         
         if self.data['cash_flow'] is not None:
             cashflow_df = self.standardize_columns(self.data['cash_flow'], 'FS_Comscfd')
             if all(key in cashflow_df.columns for key in merge_keys):
-                merged_df = pd.merge(merged_df, cashflow_df, on=merge_keys, how='outer', suffixes=('', '_cf'))
+                merged_df = pd.merge(merged_df, cashflow_df, on=merge_keys, how='inner', suffixes=('', '_cf'))
                 print(f"  现金流量表合并完成")
         
         if 'report_date' in merged_df.columns:
             merged_df['report_date'] = pd.to_datetime(merged_df['report_date'], errors='coerce')
             merged_df['year'] = merged_df['report_date'].dt.year
+            merged_df['month'] = merged_df['report_date'].dt.month
             merged_df = merged_df[(merged_df['year'] >= start_year) & (merged_df['year'] <= end_year)]
         
         if 'report_type' in merged_df.columns:
             merged_df = merged_df[merged_df['report_type'] == 'A']
+        
+        # 只保留年报数据（12月）
+        if 'month' in merged_df.columns:
+            merged_df = merged_df[merged_df['month'] == 12]
+            print(f"  筛选年报数据（12月）")
+        
+        # 去重：每只股票每年只保留一条记录
+        merged_df = merged_df.drop_duplicates(subset=['stock_code', 'year'], keep='first')
         
         print(f"  最终合并数据: {len(merged_df)} 条记录")
         return merged_df

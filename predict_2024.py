@@ -131,20 +131,25 @@ def load_and_process_2024_data():
     print("\n合并三大报表...")
     merge_keys = ['stock_code', 'report_date']
     
-    merged_df = pd.merge(balance_df, income_df, on=merge_keys, how='outer', suffixes=('_bs', '_is'))
-    merged_df = pd.merge(merged_df, cashflow_df, on=merge_keys, how='outer', suffixes=('', '_cf'))
+    merged_df = pd.merge(balance_df, income_df, on=merge_keys, how='inner', suffixes=('_bs', '_is'))
+    merged_df = pd.merge(merged_df, cashflow_df, on=merge_keys, how='inner', suffixes=('', '_cf'))
     
     # 处理日期，筛选2024年数据
     merged_df['report_date'] = pd.to_datetime(merged_df['report_date'], errors='coerce')
     merged_df['year'] = merged_df['report_date'].dt.year
+    merged_df['month'] = merged_df['report_date'].dt.month
     
-    # 筛选2024年 + 合并报表
+    # 筛选2024年 + 合并报表 + 年报（12月）
     data_2024 = merged_df[
         (merged_df['year'] == 2024) & 
-        (merged_df['report_type'] == 'A')
+        (merged_df['report_type'] == 'A') &
+        (merged_df['month'] == 12)
     ].copy()
     
-    print(f"  2024年合并报表数据: {len(data_2024)} 条")
+    # 去重：每只股票只保留一条记录（取第一条）
+    data_2024 = data_2024.drop_duplicates(subset=['stock_code'], keep='first')
+    
+    print(f"  2024年年报数据（去重后）: {len(data_2024)} 条")
     
     # 创建ST标签
     print("\n创建2024年ST标签...")
